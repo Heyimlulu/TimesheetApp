@@ -1,0 +1,85 @@
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+tr {
+    border-top: 1px solid #cbcbcb;
+    background: #f8f8f8;
+}
+
+th {
+    text-align: left;
+    padding: 8px;
+    font-weight: normal;
+    background: #e8e8e8;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+
+td {
+    text-align: left;
+    padding: 8px;
+    background: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+input {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 14px;
+}
+
+input:focus {
+    border: 1px solid #aaa;
+    box-shadow: 0 0 2px 1px rgba(59, 153, 252, .8);
+    outline: none;
+}
+
+input:hover {
+    border: 1px solid #aaa;
+    box-shadow: 0 0 2px 1px rgba(59, 153, 252, .8);
+    outline: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+button.edit {
+    background: #008CBA;
+    color: #fff;
+    border: 0;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button.edit:hover {
+    background: #007095;
+}
+
+button.edit:active {
+    background: #005880;
+}
+
+button.delete {
+    background: #ff0000;
+    color: #fff;
+    border: 0;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button.delete:hover {
+    background: #c80000;
+}
+
+button.delete:active {
+    background: #9b0000;
+}
