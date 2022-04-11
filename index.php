@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-sm-8"><h2>Timesheet <b>Details</b></h2></div>
                     <div class="col-sm-4">
-                        <!-- <button type="button" id="add-new" class="btn btn-info">Add New</button> -->
+                        <button type="button" class="btn btn-info add-new">Add New</button>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                     <th>Morning Out</th>
                     <th>Afternoon In</th>
                     <th>Afternoon Out</th>
-                    <th colspan="2">Actions</th>
+                    <th>Actions</th>
                 </thead>
                 <tbody class="align-middle">
                     <?php
@@ -49,8 +49,8 @@
                         echo "<td>$row[PM_IN]</td>";
                         echo "<td>$row[PM_OUT]</td>";
                         echo "<td>" .
-                                "<button class='edit btn btn-warning mx-1' data-id='$row[id]'>Edit</button>" .
-                                "<button class='delete btn btn-danger mx-1' data-id='$row[id]'>Delete</button>" .
+                                "<button class='btn btn-sm btn-warning edit mx-1' data-id='$row[id]'>Edit</button>" .
+                                "<button class='btn btn-sm btn-danger delete mx-1' data-id='$row[id]'>Delete</button>" .
                             "</td>";
                         echo "</tr>";
                     }
@@ -62,101 +62,5 @@
     </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    $(() => {
-        // Fill row with input on add button click
-        // $('.add-new').click(() => {
-        //     $(this).attr('disabled', "disabled");
-
-        //     $('tbody').append(`
-        //         <tr>
-        //             <td></td>
-        //             <td><input id='user' class='form-control' /></td>
-        //             <td><input id='userID' class='form-control' /></td>
-        //             <td><input id='message' class='form-control' /></td>
-        //             <td><button id='add' class='btn btn-success'>Add</button></td>
-        //             <td><button id='delete' class='btn btn-danger'>Delete</button></td>
-        //         </tr>
-        //     `);
-        // });
-
-        // Add new row on add button click
-        // $('.add').click(() => {
-        //     // check if all inputs are filled or add an error class
-
-        //     let user = $('#user').val();
-        //     let userID = $('#userID').val();
-        //     let message = $('#message').val();
-
-        //     $.ajax({
-        //         url: 'api/add.php',
-        //         type: 'POST',
-        //         data: {
-        //             user: user,
-        //             userID: userID,
-        //             message: message
-        //         },
-        //         success: (data) => {
-        //             console.log(data);
-        //             $('#add-new').removeAttr('disabled');
-        //             $('tbody').empty();
-        //             $('tbody').append(data);
-        //         }
-        //     });
-        // });
-
-        // Edit button
-        $('.edit').on('click', function() {
-            $(this).parents('tr').find('td:not(:last-child)').each(function() {
-                $(this).html(`<input class='form-control' value='${$(this).text()}' />`);
-            });
-
-            $(this).parents('tr').find('td:last-child').html(`
-                <button class='update btn btn-success'>Update</button>
-                <button class='delete btn btn-danger'>Delete</button>
-            `);
-        });
-        // Update button
-        $('.update').on('click', function() {
-            let id = $(this).parents('tr').find('td:first-child').find('input').val();
-            let date = $(this).parents('tr').find('td:nth-child(2)').find('input').val();
-            let AM_IN = $(this).parents('tr').find('td:nth-child(3)').find('input').val();
-            let AM_OUT = $(this).parents('tr').find('td:nth-child(4)').find('input').val();
-            let PM_IN = $(this).parents('tr').find('td:nth-child(5)').find('input').val();
-            let PM_OUT = $(this).parents('tr').find('td:nth-child(6)').find('input').val();
-
-            $.ajax({
-                url: 'api/update.php',
-                type: 'POST',
-                data: {
-                    id: id,
-                    date: date,
-                    AM_IN: AM_IN,
-                    AM_OUT: AM_OUT,
-                    PM_IN: PM_IN,
-                    PM_OUT: PM_OUT
-                },
-                success: (data) => {
-                    location.reload();
-                }
-            });
-        });
-
-        // Delete button
-        $('.delete').on('click', function() {
-            let id = $(this).data('id');
-
-            $.ajax({
-                url: 'api/delete.php',
-                type: 'POST',
-                data: {
-                    id: id
-                },
-                success: (data) => {
-                    location.reload();
-                }
-            });
-        });
-    })
-</script>
+<script src="js/crud.js"></script>
 </html>
