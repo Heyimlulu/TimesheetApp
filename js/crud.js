@@ -5,14 +5,19 @@ $(() => {
         $('.add-new').click(function() {
             $(this).attr('disabled', "disabled");
 
+            // retrieve last id of the table then increment it by 1
+            let lastId = $('.table tr:last-child td:first-child').text();
+            let newId = parseInt(lastId) + 1;
+
             $('tbody').append(`
                 <tr>
-                    <td>#</td>
+                    <td>${newId}</td>
                     <td><input type="date" name="date" class="form-control form-control-sm" /></td>
                     <td><input type="time" name="AM_IN" class="form-control form-control-sm" /></td>
                     <td><input type="time" name="AM_OUT" class="form-control form-control-sm" /></td>
                     <td><input type="time" name="PM_IN" class="form-control form-control-sm" /></td>
                     <td><input type="time" name="PM_OUT" class="form-control form-control-sm" /></td>
+                    <td>00:00</td>
                     <td>
                         <button type="button" class="btn btn-sm btn-success add mx-1">Add</button> 
                         <button type="button" class="btn btn-sm btn-danger remove mx-1">Delete</button>

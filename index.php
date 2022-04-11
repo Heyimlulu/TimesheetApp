@@ -14,8 +14,8 @@
         <div class="table-title">
                 <div class="row">
                     <div class="col-sm-8"><h2>Timesheet <b>Details</b></h2></div>
-                    <div class="col-sm-4">
-                        <button type="button" class="btn btn-info add-new">Add New</button>
+                    <div class="col-sm-4 align-self-center d-flex justify-content-center">
+                        <button type="button" class="btn btn-sm btn-info add-new">Add New</button>
                     </div>
                 </div>
             </div>
@@ -27,6 +27,7 @@
                     <th>Morning Out</th>
                     <th>Afternoon In</th>
                     <th>Afternoon Out</th>
+                    <th>Total Hours</th>
                     <th>Actions</th>
                 </thead>
                 <tbody class="align-middle">
@@ -48,6 +49,29 @@
                         echo "<td>$row[AM_OUT]</td>";
                         echo "<td>$row[PM_IN]</td>";
                         echo "<td>$row[PM_OUT]</td>";
+                        
+                        $time1 = strtotime($row['AM_IN']);
+                        $time2 = strtotime($row['AM_OUT']);
+                        $time3 = strtotime($row['PM_IN']);
+                        $time4 = strtotime($row['PM_OUT']);
+
+                        $diff1 = $time2 - $time1;
+                        $diff2 = $time4 - $time3;
+
+                        $diffTotal = $diff1 + $diff2;
+
+                        $hours = floor($diffTotal / 3600);
+                        $minutes = floor(($diffTotal / 60) % 60);
+
+                        if ($hours < 10) {
+                            $hours = "0" . $hours;
+                        }
+
+                        if ($minutes < 10) {
+                            $minutes = "0" . $minutes;
+                        }
+
+                        echo "<td>$hours:$minutes</td>";
                         echo "<td>" .
                                 "<button class='btn btn-sm btn-warning edit mx-1' data-id='$row[id]'>Edit</button>" .
                                 "<button class='btn btn-sm btn-danger delete mx-1' data-id='$row[id]'>Delete</button>" .
