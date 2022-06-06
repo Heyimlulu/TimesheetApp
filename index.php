@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD App</title>
+    <title>My Timesheet</title>
+    <link rel="shortcut icon" href="img/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="css/styles.css"> -->
 </head>
@@ -35,6 +36,31 @@
 
                     include_once 'config.php';
                     include_once 'database.php';
+
+                    // =========================================================================
+                    // Get IP Address
+                    // =========================================================================
+
+                    function getIPAddress() {  
+                        if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  // whether ip is from the share internet  
+                            $ip = $_SERVER['HTTP_CLIENT_IP'];  
+                        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  // whether ip is from the proxy  
+                            $ip = $_SERVER['HTTP_X_FORWARDED_FOR']; 
+                        } elseif (!empty($_SERVER['REMOTE_ADDR'])) { // whether ip is from the remote address  
+                            $ip = $_SERVER['REMOTE_ADDR'];  
+                        } else {
+                            $ip = "unknown";
+                        }
+
+                        return $ip;
+                    }  
+
+                    $sql = "INSERT INTO ip_address (ip_address, date) VALUES ('".getIPAddress()."', CURRENT_DATE)";
+                    $conn -> query($sql);
+
+                    // =========================================================================
+                    // Get Timesheet Data
+                    // =========================================================================
 
                     $sql = "SELECT * FROM timesheet";
 

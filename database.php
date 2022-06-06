@@ -14,4 +14,13 @@ $sql = "CREATE TABLE IF NOT EXISTS timesheet (
 
 $conn -> query($sql);
 
+// create table ip address
+$sql = "CREATE TABLE IF NOT EXISTS ip_address (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    ip_address VARCHAR(15) NOT NULL,
+    date DATE NOT NULL DEFAULT CURRENT_DATE
+)";
+
+$conn -> query($sql);
+
 ?>

@@ -1,10 +1,10 @@
 <?php
 
 // Database connection
-$hostname = 'localhost';
-$username = 'root';
-$password = null;
-$database = 'employeedb';
+$hostname = 'kh251.myd.infomaniak.com';
+$username = 'kh251_timesheet';
+$password = 'mxyA-f9mfU6';
+$database = 'kh251_timesheetdb';
 
 $conn = mysqli_connect($hostname, $username, $password, $database);
 
