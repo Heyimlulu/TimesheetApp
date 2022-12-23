@@ -14,4 +14,3 @@ $sql = "UPDATE timesheet SET date = '$date', AM_IN = '$AM_IN', AM_OUT = '$AM_OUT
 
 $conn -> query($sql);
 
-?>

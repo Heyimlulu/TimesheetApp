@@ -10,27 +10,21 @@ $sql = "CREATE TABLE IF NOT EXISTS timesheet (
     AM_OUT TIME NOT NULL DEFAULT '12:00',
     PM_IN TIME NOT NULL DEFAULT '13:00',
     PM_OUT TIME NOT NULL DEFAULT '17:00'
-)";
+);";
 
-$conn -> query($sql);
-
-// create ip address table
-$sql = "CREATE TABLE IF NOT EXISTS ip_address (
+$sql .= "CREATE TABLE IF NOT EXISTS users (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    ip_address VARCHAR(15) NOT NULL,
-    date DATE NOT NULL DEFAULT CURRENT_DATE
-)";
+    username VARCHAR(30) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);";
 
-$conn -> query($sql);
-
-// create login table
-$sql = "CREATE TABLE IF NOT EXISTS login (
+// create an allocation table for the timesheet table to the users table
+$sql .= "CREATE TABLE IF NOT EXISTS timesheet_users (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(30) NOT NULL UNIQUE,
-    password VARCHAR(30) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-)";
+    timesheet_id INT(6) UNSIGNED NOT NULL,
+    user_id INT(6) UNSIGNED NOT NULL,
+    FOREIGN KEY (timesheet_id) REFERENCES timesheet(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);";
 
-$conn -> query($sql);
-
-?>
+$conn -> multi_query($sql);

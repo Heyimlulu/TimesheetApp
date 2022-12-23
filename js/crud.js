@@ -11,9 +11,8 @@ $(() => {
 
     $("tbody").append(`
                 <tr>
-                    <td class='whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6'>${
-                      newId ? newId : "#"
-                    }</td>
+                    <td class='whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6'>${newId ? newId : "#"
+      }</td>
                     <td><input type="date" name="date" class="form-control form-control-sm" /></td>
                     <td><input type="time" name="AM_IN" class="form-control form-control-sm" /></td>
                     <td><input type="time" name="AM_OUT" class="form-control form-control-sm" /></td>
@@ -34,56 +33,56 @@ $(() => {
   $(document).on("click", ".edit", function () {
     $(this).parents("tr").find("td:nth-child(2)").html(`
                 <input type="date" name="date" class="form-control form-control-sm" value="${$(
-                  this
-                )
-                  .parents("tr")
-                  .find("td:nth-child(2)")
-                  .text()}" />
+      this
+    )
+        .parents("tr")
+        .find("td:nth-child(2)")
+        .text()}" />
             `);
 
     $(this).parents("tr").find("td:nth-child(3)").html(`
                 <input type="time" name="AM_IN" class="form-control form-control-sm" value="${$(
-                  this
-                )
-                  .parents("tr")
-                  .find("td:nth-child(3)")
-                  .text()}" />
+      this
+    )
+        .parents("tr")
+        .find("td:nth-child(3)")
+        .text()}" />
             `);
 
     $(this).parents("tr").find("td:nth-child(4)").html(`
                 <input type="time" name="AM_OUT" class="form-control form-control-sm" value="${$(
-                  this
-                )
-                  .parents("tr")
-                  .find("td:nth-child(4)")
-                  .text()}" />
+      this
+    )
+        .parents("tr")
+        .find("td:nth-child(4)")
+        .text()}" />
             `);
 
     $(this).parents("tr").find("td:nth-child(5)").html(`
                 <input type="time" name="PM_IN" class="form-control form-control-sm" value="${$(
-                  this
-                )
-                  .parents("tr")
-                  .find("td:nth-child(5)")
-                  .text()}" />
+      this
+    )
+        .parents("tr")
+        .find("td:nth-child(5)")
+        .text()}" />
             `);
 
     $(this).parents("tr").find("td:nth-child(6)").html(`
                 <input type="time" name="PM_OUT" class="form-control form-control-sm" value="${$(
-                  this
-                )
-                  .parents("tr")
-                  .find("td:nth-child(6)")
-                  .text()}" />
+      this
+    )
+        .parents("tr")
+        .find("td:nth-child(6)")
+        .text()}" />
             `);
 
     $(this).parents("tr").find("td:last-child").html(`
                 <button class='text-green-500 hover:text-green-700 mx-2 save' data-id='${$(
-                  this
-                ).data("id")}'>Save</button>
+      this
+    ).data("id")}'>Save</button>
                 <button class='text-red-500 hover:text-red-700 mx-2 cancel' data-id='${$(
-                  this
-                ).data("id")}'>Cancel</button>
+      this
+    ).data("id")}'>Cancel</button>
             `);
   });
 
@@ -109,11 +108,11 @@ $(() => {
 
     $(this).parents("tr").find("td:last-child").html(`
                 <button class='text-yellow-500 hover:text-yellow-700 mx-2 edit' data-id='${$(
-                  this
-                ).data("id")}'>Edit</button>
+      this
+    ).data("id")}'>Edit</button>
                 <button class='text-red-500 hover:text-red-700 mx-2 delete' data-id='${$(
-                  this
-                ).data("id")}'>Delete</button>
+      this
+    ).data("id")}'>Delete</button>
             `);
   });
 
@@ -128,7 +127,7 @@ $(() => {
     let PM_OUT = $(this).parent().siblings().find('input[name="PM_OUT"]').val();
 
     $.ajax({
-      url: "api/addTimesheet.php",
+      url: "crud/post.php",
       type: "POST",
       data: {
         date: date,
@@ -155,7 +154,7 @@ $(() => {
     let PM_OUT = $(this).parents("tr").find("td:nth-child(6) input").val();
 
     $.ajax({
-      url: "api/updateTimesheet.php",
+      url: "crud/put.php",
       type: "POST",
       data: {
         id: id,
@@ -178,7 +177,7 @@ $(() => {
     let id = $(this).data("id");
 
     $.ajax({
-      url: "api/deleteTimesheet.php",
+      url: "crud/delete.php",
       type: "POST",
       data: {
         id: id,

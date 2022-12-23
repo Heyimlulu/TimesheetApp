@@ -60,18 +60,6 @@
       <?php
       include_once 'config.php';
 
-      $sql = "CREATE TABLE IF NOT EXISTS users (
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(30) NOT NULL,
-        password VARCHAR(255) NOT NULL
-      )";
-
-      if (mysqli_query($conn, $sql)) {
-        echo "";
-      } else {
-        echo "Error creating table: " . mysqli_error($conn);
-      }
-
       if (isset($_POST["submit"])) {
         $array = array('username' => $_POST['username'], 'password' => $_POST['password'], 'confirm_password' => $_POST['confirm_password'] );
 

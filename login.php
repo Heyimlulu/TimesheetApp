@@ -61,7 +61,8 @@
 
         if (password_verify($password, $row["password"])) {
           session_start();
-          $_SESSION["username"] = $username;
+          $_SESSION["user"]["id"] = $row["id"];
+          $_SESSION["user"]["username"] = $row["username"];
           header("Location: index.php");
         } else {
           echo "<p class='text-red-500 text-center'>Incorrect username or password</p>";

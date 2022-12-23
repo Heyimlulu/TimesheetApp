@@ -9,4 +9,3 @@ $sql = "DELETE FROM timesheet WHERE id = $id";
 
 $conn -> query($sql);
 
-?>
